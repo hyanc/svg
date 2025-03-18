@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SVG Drawing</title>
+		<link rel="icon" href="data:,">
+		<meta content="notranslate" name="google">
+		<meta content="yes" name="mobile-web-app-capable">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="default" name="apple-mobile-web-app-status-bar-style">
+		<meta content="#FFFFFF" name="theme-color" media="(prefers-color-scheme: light)">
+		<meta content="#1E1E1E" name="theme-color" media="(prefers-color-scheme: dark)">
+		<meta content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,user-scalable=0,viewport-fit=cover" name="viewport">
+		<style>
+			body {margin:0;padding:0}
+			table {border-collapse:collapse;margin:5vh auto}
+			td {background-color:white;cursor:pointer;border:solid 1px lightgrey;padding:2vw}
+			@media (max-width:974px) {
+				table {margin:2vh auto}
+				td {padding:4vw}
+			}
+		</style>
+	</head>
+	<body></body>
+</html>
+<script type="text/javascript">
+	let table = document.createElement('table');
+	var size = 11;
+	for (let i = 0; i < size; i++) {
+		let tr = document.createElement('tr');
+		for (let j = 0; j < size; j++) {
+			let td = document.createElement('td');
+			td.textContent = '';
+			tr.appendChild(td);
+		}
+		table.appendChild(tr);
+	}
+	document.body.appendChild(table);
+	[...document.querySelectorAll('td')].forEach((td)=>{
+		let ts = td.style;
+		ts.backgroundColor = "white";
+		td.addEventListener('click',()=>{
+			ts.backgroundColor = (ts.backgroundColor == 'white')?'black':'white';
+		});
+	});
+	[...document.querySelectorAll('tr')].forEach((tr,i)=>{
+		[...tr.querySelectorAll('td')].forEach((td,j)=>{
+			var s = String(j).padEnd(2, '0');
+			s = s + ", " + String(i).padEnd(2, '0');
+			td.setAttribute('title',(s));
+		});
+	});
+</script>
